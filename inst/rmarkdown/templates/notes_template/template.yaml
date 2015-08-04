@@ -1,0 +1,3 @@
+name: MOOC Notes
+create_dir: false
+output: markwrites::class_note

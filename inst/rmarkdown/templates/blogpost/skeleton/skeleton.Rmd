@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+author: "Mark Hagemann"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: null
+---
+
+
+\---
+layout: post
+title: "Reflections on ODSC2015"
+date: 2015-07-03 20:40:19 -0400
+comments: true
+categories: 
+\---
+
+test text

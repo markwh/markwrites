@@ -1,0 +1,8 @@
+
+- Automatic fixing of links missing www (knit2blog, knit2wiki) DONE.
+- automatic generating of jekyll site DONE.
+- Don't make automatic date 
+  - Pull all front matter from Rmd file
+    - make template. 
+  - make an editPost function
+    - put html after yaml front matter
