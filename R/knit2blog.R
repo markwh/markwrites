@@ -12,7 +12,6 @@
 #'   result?
 #' @param blogdir Character. Where to put the result?
 #' @param postdir Character. Post directory with respect to blog directory.
-#' @param mate Open resulting html in TextMate?
 #' @details Uses yaml front matter as explained in Jekyll documentation:
 #'   http://jekyllrb.com/docs/frontmatter/
 #' @export
@@ -26,7 +25,7 @@ knit2blog = function(file, title, address = title, layout = "post",
   
   # knit to temporary html file
   outfile = "temp_outfile.html"
-  knit2html(file, output = outfile) # HTML content, temporarily stored in wd
+  rmarkdown::render(file, "html_document", output_file = outfile)
   
   # Make yaml front matter:
   comments = ifelse(comments, "true", "false")
@@ -35,8 +34,8 @@ knit2blog = function(file, title, address = title, layout = "post",
   if(length(categories) > 1) 
     categstr = paste0("[", paste(categories, collapse = ", "), "]") 
   else categstr = categories
-  
-  
+
+  docdate = format(Sys.time(), "%Y-%m-%d")
   
   yamlfm = paste0("---\nlayout: ", layout, '\ntitle: "', title, '"\ndate: ', 
                   docdate, "\ncomments: ", comments, "\ncategories: ", 
