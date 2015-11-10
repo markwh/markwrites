@@ -7,10 +7,11 @@
 #' @param format How to render the document. See ?rmarkdown::render for options
 #' @param wikidir Location of wiki library (assuming Wikitten structure) 
 #' @param subdir Location to put file relative to wikidir. Defaults to "inbox"
+#' @param generate `rake generate` the website? Defaults to FALSE.
 #' @param ... passed to rmarkdown::render
 #' @export
 
-knit2wiki = function(file, generate = TRUE, format = "html_document",
+knit2wiki = function(file, generate = FALSE, format = "html_document",
                      subdir = "inbox", 
                      wikidir = getOption("wikidir"), ...){
   outputdir = paste0(wikidir, "/", subdir)

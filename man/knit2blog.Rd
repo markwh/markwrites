@@ -25,8 +25,6 @@ result?}
 \item{blogdir}{Character. Where to put the result?}
 
 \item{postdir}{Character. Post directory with respect to blog directory.}
-
-\item{mate}{Open resulting html in TextMate?}
 }
 \description{
 This function knits a file to .html and sends the result to Octopress blog

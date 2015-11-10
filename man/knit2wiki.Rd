@@ -4,11 +4,13 @@
 \alias{knit2wiki}
 \title{Knit .Rmd files to personal wiki directory as properly formatted .html}
 \usage{
-knit2wiki(file, format = "html_document", subdir = "inbox",
-  wikidir = getOption("wikidir"), ...)
+knit2wiki(file, generate = FALSE, format = "html_document",
+  subdir = "inbox", wikidir = getOption("wikidir"), ...)
 }
 \arguments{
 \item{file}{The .Rmd file to knit}
+
+\item{generate}{`rake generate` the website? Defaults to FALSE.}
 
 \item{format}{How to render the document. See ?rmarkdown::render for options}
 
