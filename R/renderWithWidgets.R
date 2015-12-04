@@ -6,7 +6,7 @@
 #' @param self_contained
 #' @param deps_path
 
-render_with_widgets <- function(input_file,
+renderWithWidgets <- function(input_file,
                                 output_file = sub("\\.Rmd$", ".html", input_file, ignore.case = TRUE),
                                 self_contained = TRUE,
                                 deps_path = file.path(dirname(output_file), "deps")) {
