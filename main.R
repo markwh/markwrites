@@ -13,6 +13,12 @@ load_all("../markwrites")
 # Checks?
 check_doc()
 
+# Package dependencies
+use_package("knitr")
+use_package("htmltools")
+use_package("base64enc")
+use_package("markdown")
+
 # To install the package:
 devtools::install("../markwrites")
 library(markwrites)

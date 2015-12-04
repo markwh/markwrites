@@ -8,3 +8,7 @@ Maintainer: Mark Hagemann <mark.hagemann@gmail.com>
 Description: This is (currently) a place for me to stash funcitons that I use for 
   various writing projects, including blogging, note-taking, and academic writing.
 License: GPL-2
+Imports: knitr,
+    htmltools,
+    base64enc,
+    markdown
