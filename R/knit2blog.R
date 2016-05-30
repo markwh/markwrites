@@ -35,7 +35,7 @@ knit2blog = function(file, title, address = title,
   
   if(format == "html")
     if (hasWidgets) {
-      renderWithWidgets(file, ...)
+      renderWithWidgets(file, output_file = outfile, ...)
     } else {
       rmarkdown::render(file, "html_document", output_file = outfile, ...)
     }

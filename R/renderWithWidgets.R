@@ -1,10 +1,11 @@
 #' Render function for htmlwidgets
+#' 
 #' Stolen from http://stackoverflow.com/questions/31645528/knit-dtdatatable-without-pandoc
 #' I don't know why this works, or even the nature of the problem it solves
 #' @param input_file input file
 #' @param output_file output file
-#' @param self_contained
-#' @param deps_path
+#' @param self_contained Should the output be a self-contained html file?
+#' @param deps_path path of deps.
 
 renderWithWidgets <- function(input_file,
                                 output_file = sub("\\.Rmd$", ".html", input_file, ignore.case = TRUE),
