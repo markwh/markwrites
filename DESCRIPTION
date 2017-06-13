@@ -13,5 +13,6 @@ Imports:
     knitr,
     htmltools,
     base64enc,
-    markdown
+    markdown,
+    stringr
 RoxygenNote: 5.0.1

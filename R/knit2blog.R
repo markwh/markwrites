@@ -31,7 +31,7 @@ knit2blog = function(file, title, address = title,
   curdir = getwd(); on.exit(setwd(curdir))
   format = match.arg(format)
   # knit to temporary html file
-  outfile = "temp_outfile"
+  outfile = tempfile()
   
   fixedims <- fixImagesForOcto(file)
   newfile <- tempfile(fileext = ".Rmd")
@@ -39,12 +39,15 @@ knit2blog = function(file, title, address = title,
   writeLines(fixedims, con = con)
   close(con)
   
+  # cat(readLines(newfile), sep = "\n")
+  
   if(format == "html") {
     
     if (hasWidgets) {
       renderWithWidgets(newfile, output_file = outfile, ...)
     } else {
-      rmarkdown::render(newfile, "html_document", output_file = outfile, ...)
+      rmarkdown::render(newfile, output_format = "html_document", 
+                        output_file = outfile, ...)
     }
   }
   else {

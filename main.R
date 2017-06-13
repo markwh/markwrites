@@ -18,6 +18,7 @@ use_package("knitr")
 use_package("htmltools")
 use_package("base64enc")
 use_package("markdown")
+use_package("stringr")
 
 # To install the package:
 devtools::install("../markwrites")

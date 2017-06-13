@@ -23,7 +23,7 @@ fixImagesForOcto <- function(filename) {
   
   imgpat <- "!\\[.*\\]\\(.+\\)"
   lines <- grep(imgpat, readLines(filename), value = TRUE)
-  imglist <- as.data.frame(str_match(lines, "!\\[(.*)\\]\\((.+)\\)"),
+  imglist <- as.data.frame(stringr::str_match(lines, "!\\[(.*)\\]\\((.+)\\)"),
                            stringsAsFactors = FALSE)
   
   if (nrow(imglist) == 0)
@@ -49,13 +49,17 @@ fixImagesForOcto <- function(filename) {
   
   
   # Replace syntax
-  imglist$octo <- with(imglist, sprintf("{ %%/%s%s %s %%}", 
+  imglist$octo <- with(imglist, sprintf("{%% img /%s%s '%s' %%}", 
                                         getOption("imagedir"),
                                         imglist$base,
                                         imglist$alt))
-  imglist$octo[isURL] <- imglist$path[!isLocal] # for URLs
-  
+  imglist$octo[isURL] <- with(imglist, sprintf("{%% img %s '%s' %%}",
+                                imglist$path[isURL],
+                                imglist$alt[isURL])) # for URLs
+
   newlines <- readLines(filename)
+  
+  imglist <- imglist[isLocal,] # This makes it work, but non-local images don't use liquid
   
   for (i in 1:nrow(imglist)) {
     newlines <- with(imglist, gsub(full[i], octo[i], newlines, fixed = TRUE))

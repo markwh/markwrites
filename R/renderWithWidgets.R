@@ -8,9 +8,9 @@
 #' @param deps_path path of deps.
 
 renderWithWidgets <- function(input_file,
-                                output_file = sub("\\.Rmd$", ".html", input_file, ignore.case = TRUE),
-                                self_contained = TRUE,
-                                deps_path = file.path(dirname(output_file), "deps")) {
+            output_file = sub("\\.Rmd$", ".html", input_file, ignore.case = TRUE),
+            self_contained = TRUE,
+            deps_path = file.path(dirname(output_file), "deps")) {
   
   # Read input and convert to Markdown
   input <- readLines(input_file)
