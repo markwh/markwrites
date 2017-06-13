@@ -33,14 +33,22 @@ knit2blog = function(file, title, address = title,
   # knit to temporary html file
   outfile = "temp_outfile"
   
-  if(format == "html")
+  fixedims <- fixImagesForOcto(file)
+  newfile <- tempfile(fileext = ".Rmd")
+  con <- file(newfile)
+  writeLines(fixedims, con = con)
+  close(con)
+  
+  if(format == "html") {
+    
     if (hasWidgets) {
-      renderWithWidgets(file, output_file = outfile, ...)
+      renderWithWidgets(newfile, output_file = outfile, ...)
     } else {
-      rmarkdown::render(file, "html_document", output_file = outfile, ...)
+      rmarkdown::render(newfile, "html_document", output_file = outfile, ...)
     }
+  }
   else {
-    knitr::knit(file, output = outfile)
+    knitr::knit(newfile, output = outfile)
     x <- readLines(outfile)
     ymlends = grep("^---$", x)
     y <- x[(ymlends[2] + 1):length(x)]
