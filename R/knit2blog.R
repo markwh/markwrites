@@ -31,10 +31,10 @@ knit2blog = function(file, title, address = title,
   curdir = getwd(); on.exit(setwd(curdir))
   format = match.arg(format)
   # knit to temporary html file
-  outfile = tempfile()
+  outfile = "temp_outfile.Rmd"
   
   fixedims <- fixImagesForOcto(file)
-  newfile <- tempfile(fileext = ".Rmd")
+  newfile <- "temp_newfile.Rmd"
   con <- file(newfile)
   writeLines(fixedims, con = con)
   close(con)
